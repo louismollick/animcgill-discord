@@ -1,0 +1,16 @@
+{
+  "name": "animcgill-discord",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Ruiisuuu",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "querystring": "^0.2.0"
+  }
+}
