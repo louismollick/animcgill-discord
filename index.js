@@ -107,6 +107,20 @@ app.post('/minecraft/start', function (req, res) {
     const channelId = req.body.channel.channelId;
     minehutLogin()
     .then(login =>{
+        // If offline
+        axios.post(`https://api.minehut.com/server/${MINEHUT_ID}/start`,{},
+        { headers: 
+            { "Authorization" : login.token,
+              "x-session-id" : login.sessionId } 
+        }).then(res =>{
+            if (res.data.expired === "true") throw "Error when starting server"
+        })
+        .catch(err =>{
+            console.log(err);
+            throw err;
+        });
+
+        // If hibernating
         axios.post(`https://api.minehut.com/server/${MINEHUT_ID}/start_service`,{},
         { headers: 
             { "Authorization" : login.token,
